@@ -3,7 +3,7 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8" />
-    <link rel="stylesheet" href="Contenu/css/style.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.1/themes/base/minified/jquery-ui.min.css" type="text/css" />
     <title><?= $titre ?></title>   <!-- Élément spécifique -->
 </head>
@@ -17,7 +17,7 @@
         <?= $contenu ?>   <!-- Élément spécifique -->
     </div> <!-- #contenu -->
     <footer >
-        Site réalisé avec PHP, HTML5 et CSS.
+        Site réalisé avec PHP, HTML5 et CSS. <a href="./apropos.html">À propos</a>
     </footer>
 </div> <!-- #global -->
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
