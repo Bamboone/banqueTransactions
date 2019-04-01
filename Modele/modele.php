@@ -1,4 +1,5 @@
 <?php
+
 function getBdd()
 {
     $bdd = new PDO('mysql:host=localhost;dbname=banque_web;charset=utf8', 'root', 'mysql', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
@@ -39,7 +40,7 @@ function getTransaction($id)
     if ($transaction->rowCount() == 1)
         return $transaction->fetch();  // Accès à la première ligne de résultat
     else
-        throw new Exception("Aucun commentaire ne correspond à l'identifiant '$id'");
+        throw new Exception("Aucune transaction ne correspond à l'identifiant '$id'");
     return $transaction;
 }
 
@@ -73,4 +74,18 @@ function modifierTransaction($transacton)
     $bdd = getBdd();
     $req = $bdd->prepare('UPDATE transactions SET id_compte = ?, montant = ?, type_transaction = ?, destinataire = ?, courrielDestinataire=?, frequence = ? WHERE id = ?');
     $req->execute(array($transacton['id_compte'], $transacton['montant'], $transacton['type_transaction'], $transacton['destinataire'], $transacton['courrielDestinataire'], $transacton['frequence'], $transacton['id']));
+}
+
+function searchMontant($term)
+{
+    $conn = getBdd();
+    $stmt = $conn->prepare('SELECT montant FROM montants WHERE montant LIKE :term');
+    $stmt->execute(array('term' => '%' . $term . '%'));
+
+    while ($row = $stmt->fetch()) {
+        $return_arr[] = $row['montant'];
+    }
+
+    /* Toss back results as json encoded array. */
+    return json_encode($return_arr);
 }

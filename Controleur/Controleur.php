@@ -2,7 +2,6 @@
 require 'Modele/modele.php';
 
 
-
 function accueil()
 {
     $comptes = getComptes();
@@ -58,17 +57,19 @@ function ajouter($compte)
         setCompte($compte);
         header('Location: index.php');
     } else {
-        header('Location: index.php');
+        header('Location: index.php?action=nouveauCompte&erreur=date');
     }
 
 }
 
-function modifier($id){
+function modifier($id)
+{
     $transaction = getTransaction($id);
     require 'Vue/vueModifier.php';
 }
 
-function appliquerModification($transaction){
+function appliquerModification($transaction)
+{
     $validation_courriel = filter_var($transaction['courrielDestinataire'], FILTER_VALIDATE_EMAIL);
     if ($validation_courriel) {
         // Modifier le commentaire à l'aide du modèle
@@ -77,10 +78,17 @@ function appliquerModification($transaction){
         header('Location: index.php?action=compte&id=' . $transaction['id_compte']);
     } else {
         //Recharger la page avec une erreur près du courriel
-        header('Location: index.php?action=compte&id=' . $transaction['id_compte'] . '&erreur=courriel');
+        header('Location: index.php?action=modifier&id=' . $transaction['id'] . '&erreur=courriel');
     }
 }
 
-function erreur($msgErreur) {
+function quelsMontants($term)
+{
+    echo(searchMontant($term));
+
+}
+
+function erreur($msgErreur)
+{
     require 'Vue/vueErreur.php';
 }

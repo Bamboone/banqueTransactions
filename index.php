@@ -5,7 +5,6 @@ require './Controleur/Controleur.php';
 try {
     if (isset($_GET['action'])) {
 
-        // Afficher un article
         if ($_GET['action'] == 'compte') {
             if (isset($_GET['id'])) {
                 // intval renvoie la valeur numérique du paramètre ou 0 en cas d'échec
@@ -80,6 +79,9 @@ try {
                     throw new Exception("Identifiant de transaction incorrect");
             } else
                 throw new Exception("Aucun identifiant de transaction");
+
+        } else if ($_GET['action'] == 'quelsMontants') {
+            quelsMontants($_GET['term']);
 
         }
     } else {

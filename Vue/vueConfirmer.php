@@ -1,6 +1,7 @@
 <?php $titre = "Supprimer - Transaction " . $transaction['id']; ?>
 <?php ob_start(); ?>
     <article>
+        <br>
         <div class="card bg-light mb-3" style="max-width: 540px;">
             <div class="card-header">
                 Voulez-vous supprimer la transaction <?= $transaction['id'] ?>?

@@ -6,12 +6,10 @@
     ?>
 
     <article>
-        <header>
-
-        </header>
+        <br>
         <div class="card bg-light mb-3" style="max-width: 540px;">
             <div class="card-header">
-                <a href="<?= "index.php?action=compte&id=" . $compte['id'] ?>">Information sur le
+                <a href="<?= "index.php?action=compte&id=" . $compte['id'] ?>">Informations sur le
                     compte <?= $compte['id'] ?> </a>
             </div>
             <div class="card-body">
@@ -31,7 +29,6 @@
 <?php endforeach; ?>
     <a class="btn-lg btn-primary" href="index.php?action=nouveauCompte">Ajouter un compte
     </a>
-<br>
-<?php $contenu = ob_get_clean(); ?>
 
+<?php $contenu = ob_get_clean(); ?>
 <?php require 'Vue/gabarit.php'; ?>

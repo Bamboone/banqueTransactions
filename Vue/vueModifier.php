@@ -1,31 +1,31 @@
 <?php $titre = "Modifier - Transaction " . $transaction['id']; ?>
 <?php ob_start(); ?>
-<?php $erreur=''; ?>
+<?php
+$erreur = '';
+if (isset($_GET["erreur"])) {
+    $erreur = $_GET["erreur"];
+}
+?>
 <article>
     <header>
         <p>
-        <h1>
+        <h3>
             Modification d'une transaction
-        </h1>
+        </h3>
     </header>
 </article>
 
 <form action="index.php?action=appliquerModification" method="post">
 
     <div>
+        <input type="hidden" name="id_compte" value="<?= $transaction['id_compte'] ?>"/>
         <div class="form-group row">
-            <label for="id_compte" class="col-sm-2 col-form-label">Numéro de compte: </label><input type="text"
-                                                                                                    name="id_compte"
-                                                                                                    id="id_compte"
-                                                                                                    value="<?= $transaction['id_compte']; ?>"/>
+            <label for="montant" class="col-sm-4 col-form-label">Montant </label><input type="text" name="montant"
+                                                                                        id="auto"
+                                                                                        value="<?= $transaction['montant']; ?>"/>
         </div>
         <div class="form-group row">
-            <label for="montant" class="col-sm-2 col-form-label">Montant: </label><input type="text" name="montant"
-                                                                                         id="montant"
-                                                                                         value="<?= $transaction['montant']; ?>"/>
-        </div>
-        <div class="form-group row">
-            <label for="type_transaction" class="col-sm-2 col-form-label">Type de transaction: </label>
+            <label for="type_transaction" class="col-sm-4 col-form-label">Type de transaction </label>
             <select class="form-control-sm" name="type_transaction">
                 <option value="Même banque" <?= $transaction['type_transaction'] == 'Même banque' ? ' selected="selected"' : ''; ?>>
                     Même banque
@@ -36,24 +36,25 @@
             </select>
         </div>
         <div class="form-group row">
-            <label for="destinataire" class="col-sm-2 col-form-label">Destinataire: </label><input id="destinataire"
-                                                                                                   name="destinataire"
-                                                                                                   type="text"
-                                                                                                   value="<?= $transaction['destinataire']; ?>"/>
+            <label for="destinataire" class="col-sm-4 col-form-label">Destinataire </label><input id="destinataire"
+                                                                                                  name="destinataire"
+                                                                                                  type="text"
+                                                                                                  value="<?= $transaction['destinataire']; ?>"/>
         </div>
         <div class="form-group row">
-            <label for="courrielDestinataire" class="col-sm-2 col-form-label">Adresse courriel du
-                destinataire: </label><input id="courrielDestinataire"
-                                             name="courrielDestinataire"
-                                             type="text" value="<?= $transaction['courrielDestinataire']; ?>"/>
+            <label for="courrielDestinataire" class="col-sm-4 col-form-label">Adresse courriel du
+                destinataire (xyz@xyz.xyz) </label><input id="courrielDestinataire"
+                                                          name="courrielDestinataire"
+                                                          type="text"
+                                                          value="<?= $transaction['courrielDestinataire']; ?>"/>
             <div class="col-sm-3">
                 <?= ($erreur == 'courriel') ? '<small class="text-danger">Entrez un courriel valide s.v.p.</small>' : '' ?>
             </div>
         </div>
         <fieldset class="form-group">
             <div class="row">
-                <label for="frequence" class="col-sm-2 col-form-label">Fréquence: </label>
-                <div class="col-sm-10">
+                <label for="frequence" class="col-sm-4 col-form-label">Fréquence </label>
+                <div class="col-sm-3">
                     <div class="form-check">
                         <input class="form-check-input" type="radio" name="frequence" value="Une fois" id="uneFois"
                             <?= $transaction['frequence'] == 'Une fois' ? ' checked="checked"' : ''; ?>/>
