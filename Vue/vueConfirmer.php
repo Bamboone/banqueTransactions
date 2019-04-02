@@ -2,17 +2,16 @@
 <?php ob_start(); ?>
     <article>
         <br>
+        <h3>Voulez-vous supprimer cette transaction?</h3>
         <div class="card bg-light mb-3" style="max-width: 540px;">
             <div class="card-header">
-                Voulez-vous supprimer la transaction <?= $transaction['id'] ?>?
+                Transaction <?= $transaction['id'] ?>
             </div>
             <div class="card-body">
-                <p>
-                    <strong><?= $transaction['montant'] ?>$</strong> à <?= $transaction['destinataire'] ?>
-                    (<?= $transaction['courrielDestinataire'] ?>). <br>
-                    Fréquence: <?= $transaction['frequence'] ?> <br>
-                    Type: <?= $transaction['type_transaction'] ?>
-                </p>
+                <strong><?= $transaction['montant'] ?>$</strong> à <?= $transaction['destinataire'] ?>
+                (<?= $transaction['courrielDestinataire'] ?>). <br>
+                Fréquence: <?= $transaction['frequence'] ?> <br>
+                Type: <?= $transaction['type_transaction'] ?>
             </div>
 
         </div>

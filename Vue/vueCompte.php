@@ -16,7 +16,7 @@
     </article>
     <hr/>
     <header>
-        <h3>Transactions du compte numéro <?= $compte['id'] ?></h3>
+        <h3>Transactions du compte <?= $compte['id'] ?></h3>
     </header>
 <?php foreach ($transactions as $transaction): ?>
     <div class="card bg-light mb-3" style="max-width: 540px;">
@@ -38,7 +38,7 @@
     </div>
     <br>
 <?php endforeach; ?>
-
+    <hr>
     <form action="index.php?action=transaction" method="post">
         <h3>Ajouter une transaction</h3>
         <input type="hidden" name="id_compte" value="<?= $compte['id'] ?>"/>

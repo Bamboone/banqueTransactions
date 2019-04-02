@@ -13,15 +13,11 @@
                     compte <?= $compte['id'] ?> </a>
             </div>
             <div class="card-body">
-                <p>
-                    Numéro de compte: <?= $compte['id'] ?>
-                    <br>
-                    Type de compte: <?= $compte['type_compte'] ?>
-                    <br>
-                    <time>Date d'ouverture: <?= $compte['date'] ?></time>
-                    <br>
-                    Numéro d'utilisateur: <?= $compte['id_utilisateur'] ?>
-                </p>
+                Type de compte: <?= $compte['type_compte'] ?>
+                <br>
+                <time>Date d'ouverture: <?= $compte['date'] ?></time>
+                <br>
+                Numéro d'utilisateur: <?= $compte['id_utilisateur'] ?>
             </div>
 
         </div>

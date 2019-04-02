@@ -19,9 +19,7 @@ function transaction($transaction)
 {
     $validation_courriel = filter_var($transaction['courrielDestinataire'], FILTER_VALIDATE_EMAIL);
     if ($validation_courriel) {
-        // Ajouter le commentaire à l'aide du modèle
         setTransaction($transaction);
-        //Recharger la page pour mettre à jour la liste des commentaires associés
         header('Location: index.php?action=compte&id=' . $transaction['id_compte']);
     } else {
         //Recharger la page avec une erreur près du courriel
@@ -37,11 +35,8 @@ function confirmer($id)
 
 function supprimer($id)
 {
-    // Lire le commentaire afin d'obtenir le id de l'article associé
     $transaction = getTransaction($id);
-    // Supprimer le commentaire à l'aide du modèle
     deleteTransaction($id);
-    //Recharger la page pour mettre à jour la liste des commentaires associés
     header('Location: index.php?action=compte&id=' . $transaction['id_compte']);
 }
 
@@ -72,12 +67,9 @@ function appliquerModification($transaction)
 {
     $validation_courriel = filter_var($transaction['courrielDestinataire'], FILTER_VALIDATE_EMAIL);
     if ($validation_courriel) {
-        // Modifier le commentaire à l'aide du modèle
         modifierTransaction($transaction);
-        //Recharger la page pour mettre à jour la liste des commentaires associés
         header('Location: index.php?action=compte&id=' . $transaction['id_compte']);
     } else {
-        //Recharger la page avec une erreur près du courriel
         header('Location: index.php?action=modifier&id=' . $transaction['id'] . '&erreur=courriel');
     }
 }
